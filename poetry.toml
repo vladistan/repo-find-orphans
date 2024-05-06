@@ -1,0 +1,9 @@
+[virtualenvs]
+create = true
+in-project = true
+
+[virtualenvs.options]
+# Symlinking binaries to the venv instead of copying makes it possible to
+# run pyright-langserver outside the devcontainer and still have it resolve
+# dependencies in the venv properly.
+always-copy = false

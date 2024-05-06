@@ -1,0 +1,97 @@
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "vendor_files"
+]
+
+line-length = 120
+indent-width = 4
+
+target-version = "py312"
+
+[lint]
+select = ["F", "W", "E", "C90", "I", "N", "D", "UP", "ASYNC", "S", "BLE", "FBT", "B", "A", "DTZ", "ISC",
+          "PIE", "T20", "PYI", "PT", "RSE", "RET", "SLF", "SLOT", "SIM", "TCH",
+          "INT", "ARG", "PTH", "TD", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "PERF", "FURB", "LOG", "RUF"]
+ignore = [
+    # rules that conflict with the Ruff formatter https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+    "W191","E111","E114","E117","D206","Q000","Q001","Q002","Q003","COM812","COM819","ISC001","ISC002","E501",
+
+    "D203", # ignore D203 because it's a bug https://github.com/PyCQA/pydocstyle/issues/141
+    "D106", # nested classes are usually library-specific and don't always require its own docstring
+    "D107", # init shouldn't need its own docstring, those arguments can be captured in the class level docstring
+    "D213", # ignore D213 because mutually exclusive with D212 https://stackoverflow.com/questions/45990301/pep257-d212-and-d213-conflicts
+    "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
+    "D102", # Missing docstring in public method
+    "D103", # Docstrings are not always necessary for public functions
+    "D104", # Docstrings are not always necessary for public packages
+    "D105", # Docstrings are not always necessary for magic methods
+    "S101", # We do not use the -o optimize flag, so it's fine to use `assert` in the main code. It's especially helpful for static typing
+    "TD003", # Missing issue link on the line following this TODO
+    "TD002", # adding author names to TODOs erodes shared ownership of codebase. Git history provides information about who originally created the TODO if that information is vitally needed
+    "SIM102", # nested if statements can be better analyzed by coverage detectors than compound statements
+    "TRY003", # many cases don't warrant custom exceptions, so longish messages are fine
+
+    # If we make autouse fixture functions private (= name that start
+    # with underscores), then Pyright complains that the functions are
+    # unused.  So we opt to make the functions public instead, and
+    # disable the Ruff rule that claims that it's a convention to make
+    # them private.
+    "PT004"
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = [
+                "T201", "T203", # don't automatically delete print statements, just warn about them
+                "RUF100" # don't automatically remove unnecessary suppressions, because that can leave behind a now-stale comment about why the suppression was originally added
+            ]
+
+# Allow unused variables if it's an underscore.
+dummy-variable-rgx = "^_$"
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401"] # imported but unused is not applicable to init
+"exceptions.py" = ["D100", "D101", "D102"] # Exceptions don't always require docstrings for modules, classes or methods
+"constants.py" = ["D100"] # Constants don't always require docstrings for modules
+[lint.isort]
+force-single-line = true
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"

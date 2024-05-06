@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<manifest>
+ <remote fetch="ssh://git@github.com/vladistan" name="origin"/>
+ <remote name="bbuck" fetch="ssh://git@bitbucket.org/vladistan" />
+ <remote name="bbuck-vp" fetch="ssh://git@bitbucket.org/vladsprivate" />
+ <remote name="ghpub" fetch="https://github.com/" />
+
+ <default remote="origin" revision="master" sync-c="true" sync-j="4" sync-s="true"/>
+
+ <project name="repo-common.git" path="repo" />
+
+ <project name="IoMux2Uboot.git" path="archive/arm/IoMux2Uboot"/>
+ <project name="pp-epdc-test.git" path="archive/arm/pp-epdc-test"/>
+ <project name="u-boot-imx.git" path="archive/arm/u-boot-imx"/>
+ <project name="uboot.git" path="archive/arm/uboot"/>
+
+ <project name="slack-sender.git" path="slack-sender" revision="extract-chatter" remote="bbuck" />
+
+ <project name="vagrant-vcenter.git" path="vagrant-vcenter"/>
+
+ <project name="wiki2beamer.git" path="wiki2beamer"/>
+
+
+</manifest>
