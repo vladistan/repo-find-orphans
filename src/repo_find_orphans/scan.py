@@ -26,7 +26,7 @@ def scan_projects(path: Path, projects: list[Project]) -> set[Path]:
 
         clean_path = gpath.relative_to(Path(path))
 
-        if any(str(clean_path).startswith(str(proj_path)) for proj_path in project_paths):
+        if any((str(clean_path.parent) + "/").startswith(str(proj_path) + "/") for proj_path in project_paths):
             continue
         if any(str(clean_path).startswith(str(proj_path)) for proj_path in dirs):
             continue
