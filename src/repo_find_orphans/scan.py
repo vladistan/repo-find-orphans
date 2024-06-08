@@ -1,15 +1,29 @@
 from pathlib import Path
 
-from repo_find_orphans.types.project import Project
 from rich.console import Console
 from rich.progress import track
+
+from repo_find_orphans.manifest import Manifest
+from repo_find_orphans.remote import GitHosting
+from repo_find_orphans.selections import Selections
+from repo_find_orphans.types.project import Project
 
 ignored_files = {
     ".DS_Store",
 }
 
 
-def scan_projects(path: Path, projects: list[Project]) -> set[Path]:
+def find_remote_orphans(manifest: Manifest, selections: Selections):
+    github = GitHosting()
+    projects = set(p.canonical_form for p in manifest.projects if p.host_type == "github")
+    repos = github.get_repos()
+
+    for repo in repos:
+        if f"{repo}.git" not in projects and repo in selections:
+            yield repo
+
+
+def find_local_orphans(path: Path, projects: list[Project]) -> set[Path]:
     project_paths = {Path(project.path) for project in projects}
     dirs: set[Path] = set()
 

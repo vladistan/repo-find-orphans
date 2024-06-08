@@ -2,7 +2,6 @@
 <manifest>
  <remote fetch="ssh://git@github.com/vladistan" name="origin"/>
  <remote name="bbuck" fetch="ssh://git@bitbucket.org/vladistan" />
- <remote name="bbuck-vp" fetch="ssh://git@bitbucket.org/vladsprivate" />
  <remote name="ghpub" fetch="https://github.com/" />
 
  <default remote="origin" revision="master" sync-c="true" sync-j="4" sync-s="true"/>
@@ -12,9 +11,13 @@
  <project name="IoMux2Uboot.git" path="archive/arm/IoMux2Uboot"/>
  <project name="pp-epdc-test.git" path="archive/arm/pp-epdc-test"/>
  <project name="u-boot-imx.git" path="archive/arm/u-boot-imx"/>
- <project name="uboot.git" path="archive/arm/uboot"/>
+ <project name="uboot.git" path="archive/arm/uboot" remote="origin"/>
 
  <project name="slack-sender.git" path="slack-sender" revision="extract-chatter" remote="bbuck" />
+ <project name="dcreager/dotfiles-public.git" path="ref/dotfiles-dcreager" revision="linux" remote="ghpub"/>
+ <project name="CommerceDataService/patent-process-and-search.git" path="ref/patent-search" revision="linux" remote="ghpub"/>
+ <project name="Ebiquity/837-bot.git" path="thesis/proposal/837-bot" remote="ghpub" />
+
 
  <project name="vagrant-vcenter.git" path="vagrant-vcenter"/>
 

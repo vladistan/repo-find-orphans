@@ -1,0 +1,19 @@
+CommerceDataService:
+  exclude: ['']
+dcreager:
+  include:
+    - dotfiles
+Ebiquity:
+  exclude:
+    - A
+    - a
+    - b
+    - procure
+solmir:
+  exclude:
+    - bob-the-operator
+    - bill-gates
+  include:
+    - bob
+    - bill
+vladistan:
