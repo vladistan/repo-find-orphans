@@ -2,7 +2,7 @@
 name = "repo-find-orphans"
 authors = ["Vlad <vlad@v-lad.org>"]
 description = "Supplements to the repo script"
-version = "0.1.1"
+version = "0.1.2"
 readme = "README.md"
 
 packages = [

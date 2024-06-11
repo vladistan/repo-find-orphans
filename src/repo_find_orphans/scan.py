@@ -19,7 +19,7 @@ def find_remote_orphans(manifest: Manifest, selections: Selections):
     repos = github.get_repos()
 
     for repo in repos:
-        if f"{repo}.git" not in projects and repo in selections:
+        if (f"{repo}.git" not in projects and repo not in projects) and repo in selections:
             yield repo
 
 
