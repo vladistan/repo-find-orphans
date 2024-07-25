@@ -62,7 +62,7 @@ After the tool is installed use one of the following commands to find orphan pro
 
 ### Finding Local Orphans
 
-This function scans your local project directory and finds all projects in it. Then it consults the specified manifest file to see which projects exist in the directory but are not mentioned in the manifest.  Then it will print the list of such projects for your review and possible inclusion into the manifest. 
+This function scans your local project directory and finds all projects in it. Then it consults the specified manifest file to see which projects exist in the directory but are not mentioned in the manifest.  Then it will print the list of such projects for your review and possible inclusion into the manifest.
 
 ```
 repo-find-orphans local MANIFEST_FILE PROJECT_DIR
@@ -120,7 +120,7 @@ all projects will be included.
 a list of prefixes as well.  If a name of a project matches any of
 the prefixes in this section it will be excluded from the scan.  If
 this section is empty or missing no projects will be excluded.
-  
+
 For example:
 
 
@@ -147,7 +147,7 @@ with `bob` or `bill` from the `solmir` organization.
 ```yaml
 reddit: {exclude: [""]}
 ```
-This configuration will include all projects of the `reddit` organization. 
+This configuration will include all projects of the `reddit` organization.
 
 ```yaml
 apache:
@@ -170,4 +170,3 @@ If you installed your tool using pipx, but get the `command not
 found` error when you are trying to run it check that `~/.local/bin`
 is in your shell search path. If it is not, run `pipx ensurepath`
 to fix this
-
